@@ -28,11 +28,11 @@ public class GenerateWebServiceRest {
         String restInterfacePackage = jsonPayloadModel.getRestInterfacePackage();
         String restImplPackage = jsonPayloadModel.getRestImplPackage();
 
-        createRestServiceFor(className,restInterfacePackage,  dtoClassPackage, entityClassPackage);
-        return null;
+        JavaFile restServiceFileForRest = createRestServiceFileFor(className, restInterfacePackage, dtoClassPackage, entityClassPackage);
+        return restServiceFileForRest;
     }
 
-    private JavaFile createRestServiceFor(String className, String restInterfacePackage, String dtoClassPackage, String entityClassPackage) {
+    private JavaFile createRestServiceFileFor(String className, String restInterfacePackage, String dtoClassPackage, String entityClassPackage) {
         ClassName dtoClazz = ClassName.get(dtoClassPackage, className+"Dto");
 
 

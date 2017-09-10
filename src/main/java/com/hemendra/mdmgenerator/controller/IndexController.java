@@ -3,6 +3,7 @@ package com.hemendra.mdmgenerator.controller;
 import com.hemendra.mdmgenerator.generator.GenerateDto;
 import com.hemendra.mdmgenerator.generator.GenerateEntity;
 import com.hemendra.mdmgenerator.generator.GenerateWebServiceRest;
+import com.hemendra.mdmgenerator.generator.GenerateWebServiceRestImpl;
 import com.hemendra.mdmgenerator.model.JsonPayloadModel;
 import com.squareup.javapoet.JavaFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +21,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @Autowired
-    GenerateDto generateDto;
+    private GenerateDto generateDto;
 
     @Autowired
-    GenerateEntity generateEntity;
+    private GenerateEntity generateEntity;
 
     @Autowired
-    GenerateWebServiceRest generateWebServiceRest;
+    private GenerateWebServiceRest generateWebServiceRest;
+
+    @Autowired
+    private GenerateWebServiceRestImpl generateWebServiceRestImpl;
+
 
     @PostMapping("/entity-dto")
     private ResponseEntity<byte []> generateEntityAndDto(@RequestBody JsonPayloadModel jsonPayloadModel) {
-        JavaFile dtoFile = generateDto.generate(jsonPayloadModel);
+        /*JavaFile dtoFile = generateDto.generate(jsonPayloadModel);
         JavaFile entityFile = generateEntity.generate(jsonPayloadModel);
-        JavaFile restInterfaceFile = generateWebServiceRest.generate(jsonPayloadModel);
+        JavaFile restInterfaceFile = generateWebServiceRest.generate(jsonPayloadModel);*/
+        JavaFile restImplFile = generateWebServiceRestImpl.generate(jsonPayloadModel);
         return null;
     }
 }

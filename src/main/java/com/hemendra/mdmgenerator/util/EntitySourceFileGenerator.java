@@ -9,6 +9,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -64,9 +65,10 @@ public class EntitySourceFileGenerator {
         this.tableName = tableName;
     }
 
-    public JavaFile invoke() {
+    public JavaFile invoke(String packageName) {
         //Create class
         TypeSpec entity = TypeSpec.classBuilder(className)
+                .addSuperinterface(Serializable.class)
                 .addAnnotation(getEntityAnnotation())
                 .addAnnotation(getTableAnnotation())
                 .addFields(fieldSpecs)
@@ -74,7 +76,7 @@ public class EntitySourceFileGenerator {
                 .build();
 
         //create file
-        JavaFile build = JavaFile.builder("com.bipros.ims.entity", entity).build();
+        JavaFile build = JavaFile.builder(packageName, entity).build();
         try {
             //Write to file
             build.writeTo(System.out);

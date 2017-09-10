@@ -7,6 +7,7 @@ import com.squareup.javapoet.TypeSpec;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -52,15 +53,16 @@ public class DtoSourceFileGenerator {
         this.methodSpecs = methodSpecs;
     }
 
-    public JavaFile invoke() {
+    public JavaFile invoke(String packageName) {
         //Create class
-        TypeSpec hello = TypeSpec.classBuilder(className)
+        TypeSpec dtoClass = TypeSpec.classBuilder(className)
+                .addSuperinterface(Serializable.class)
                 .addFields(fieldSpecs)
                 .addMethods(methodSpecs)
                 .build();
 
         //create file
-        JavaFile build = JavaFile.builder("com.bipros.ims.entity", hello).build();
+        JavaFile build = JavaFile.builder(packageName, dtoClass).build();
         try {
             //Write to file
             build.writeTo(System.out);

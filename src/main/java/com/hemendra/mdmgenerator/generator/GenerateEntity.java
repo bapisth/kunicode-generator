@@ -37,6 +37,7 @@ public class GenerateEntity {
 
         String className = jsonPayloadModel.getClassName();
         String tableName = jsonPayloadModel.getTableName();
+        String entityClassPackage = jsonPayloadModel.getEntityClassPackage();
         List<FieldModel> fields = jsonPayloadModel.getFields();
 
 
@@ -48,8 +49,7 @@ public class GenerateEntity {
         entitySourceFileGenerator.setFieldSpecs(fieldSpecs);
         entitySourceFileGenerator.setMethodSpecs(methodSpecs);
 
-        JavaFile javaFile = entitySourceFileGenerator.invoke();
-
+        JavaFile javaFile = entitySourceFileGenerator.invoke(entityClassPackage);
 
         return javaFile;
     }

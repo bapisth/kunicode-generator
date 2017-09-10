@@ -37,6 +37,7 @@ public class GenerateDto {
 
         //Retrieve class name and fields from json data
         String className = jsonPayloadModel.getClassName();
+        String dtoClassPackage = jsonPayloadModel.getDtoClassPackage();
         List<FieldModel> fields = jsonPayloadModel.getFields();
 
         //convert to java member variable and methods from json data
@@ -46,7 +47,7 @@ public class GenerateDto {
         dtoSourceFileGenerator.setClassName(className);
         dtoSourceFileGenerator.setFieldSpecs(fieldSpecs);
         dtoSourceFileGenerator.setMethodSpecs(methodSpecs);
-        JavaFile build = dtoSourceFileGenerator.invoke();
+        JavaFile build = dtoSourceFileGenerator.invoke(dtoClassPackage);
 
         return build;
     }

@@ -1,9 +1,5 @@
 package com.hemendra.mdmgenerator.model;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.util.Comparator;
-
 /**
  * @author Hemendra
  */
@@ -11,16 +7,27 @@ public class FieldModel implements Comparable {
     private String fieldName;
     private String fieldType;
     private String javaDoc;
+    private String entityClassPackage;
+    private String dtoClassPackage;
+    private String restInterfacePackage;
+    private String restImplPackage;
     private ColumnIdentity columnIdentity;
 
     public FieldModel() {
     }
 
-    public FieldModel(String fieldName, String fieldType, String javaDoc, ColumnIdentity columnIdentity) {
+    public FieldModel(String fieldName, String fieldType,
+                      String javaDoc, ColumnIdentity columnIdentity,
+                      String entityClassPackage, String dtoClassPackage,
+                      String restInterfacePackage, String restImplPackage) {
         this.fieldName = fieldName;
         this.fieldType = fieldType;
         this.javaDoc = javaDoc;
         this.columnIdentity = columnIdentity;
+        this.entityClassPackage = entityClassPackage;
+        this.dtoClassPackage = dtoClassPackage;
+        this.restImplPackage = restImplPackage;
+        this.restInterfacePackage = restInterfacePackage;
     }
 
     public String getFieldName() {
@@ -53,6 +60,38 @@ public class FieldModel implements Comparable {
 
     public void setColumnIdentity(ColumnIdentity columnIdentity) {
         this.columnIdentity = columnIdentity;
+    }
+
+    public String getEntityClassPackage() {
+        return entityClassPackage;
+    }
+
+    public void setEntityClassPackage(String entityClassPackage) {
+        this.entityClassPackage = entityClassPackage;
+    }
+
+    public String getDtoClassPackage() {
+        return dtoClassPackage;
+    }
+
+    public void setDtoClassPackage(String dtoClassPackage) {
+        this.dtoClassPackage = dtoClassPackage;
+    }
+
+    public String getRestInterfacePackage() {
+        return restInterfacePackage;
+    }
+
+    public void setRestInterfacePackage(String restInterfacePackage) {
+        this.restInterfacePackage = restInterfacePackage;
+    }
+
+    public String getRestImplPackage() {
+        return restImplPackage;
+    }
+
+    public void setRestImplPackage(String restImplPackage) {
+        this.restImplPackage = restImplPackage;
     }
 
     @Override

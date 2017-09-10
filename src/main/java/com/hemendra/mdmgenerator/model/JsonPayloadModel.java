@@ -9,6 +9,13 @@ import java.util.List;
 public class JsonPayloadModel implements Serializable {
     private String className;
     private String tableName;
+
+    private String entityClassPackage;
+    private String dtoClassPackage;
+    private String restInterfacePackage;
+    private String restImplPackage;
+
+
     private List<FieldModel> fields;
     private Boolean generateAllArgConstructor = false;
     private Boolean generateGetterAndSetter;
@@ -18,7 +25,11 @@ public class JsonPayloadModel implements Serializable {
     public JsonPayloadModel() {
     }
 
-    public JsonPayloadModel(String className, String tableName, List<FieldModel> fields, Boolean generateAllArgConstructor, Boolean generateGetterAndSetter, Boolean generateToStringMethod, Boolean isEntityClass) {
+    public JsonPayloadModel(String className, String tableName, List<FieldModel> fields,
+                            Boolean generateAllArgConstructor, Boolean generateGetterAndSetter,
+                            Boolean generateToStringMethod, Boolean isEntityClass,
+                            String entityClassPackage, String dtoClassPackage,
+                            String restInterfacePackage, String restImplPackage) {
         this.className = className;
         this.tableName = tableName;
         this.fields = fields;
@@ -26,6 +37,11 @@ public class JsonPayloadModel implements Serializable {
         this.generateGetterAndSetter = generateGetterAndSetter;
         this.generateToStringMethod = generateToStringMethod;
         this.isEntityClass = isEntityClass;
+        this.entityClassPackage = entityClassPackage;
+        this.dtoClassPackage = dtoClassPackage;
+        this.restInterfacePackage = restInterfacePackage;
+        this.restImplPackage = restImplPackage;
+
     }
 
     public String getClassName() {
@@ -82,5 +98,37 @@ public class JsonPayloadModel implements Serializable {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
+    }
+
+    public String getEntityClassPackage() {
+        return entityClassPackage;
+    }
+
+    public void setEntityClassPackage(String entityClassPackage) {
+        this.entityClassPackage = entityClassPackage;
+    }
+
+    public String getDtoClassPackage() {
+        return dtoClassPackage;
+    }
+
+    public void setDtoClassPackage(String dtoClassPackage) {
+        this.dtoClassPackage = dtoClassPackage;
+    }
+
+    public String getRestInterfacePackage() {
+        return restInterfacePackage;
+    }
+
+    public void setRestInterfacePackage(String restInterfacePackage) {
+        this.restInterfacePackage = restInterfacePackage;
+    }
+
+    public String getRestImplPackage() {
+        return restImplPackage;
+    }
+
+    public void setRestImplPackage(String restImplPackage) {
+        this.restImplPackage = restImplPackage;
     }
 }

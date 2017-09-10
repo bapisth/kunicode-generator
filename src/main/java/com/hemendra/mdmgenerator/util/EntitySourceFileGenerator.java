@@ -1,13 +1,10 @@
 package com.hemendra.mdmgenerator.util;
 
-import com.hemendra.mdmgenerator.model.FieldModel;
 import com.squareup.javapoet.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -67,7 +64,7 @@ public class EntitySourceFileGenerator {
 
     public JavaFile invoke(String packageName) {
         //Create class
-        TypeSpec entity = TypeSpec.classBuilder(className)
+        TypeSpec entity = TypeSpec.classBuilder(className+"Entity")
                 .addSuperinterface(Serializable.class)
                 .addAnnotation(getEntityAnnotation())
                 .addAnnotation(getTableAnnotation())

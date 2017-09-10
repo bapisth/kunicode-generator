@@ -2,9 +2,9 @@ package com.hemendra.mdmgenerator.generator;
 
 import com.hemendra.mdmgenerator.model.FieldModel;
 import com.hemendra.mdmgenerator.model.JsonPayloadModel;
+import com.hemendra.mdmgenerator.util.DtoSourceFileGenerator;
 import com.hemendra.mdmgenerator.util.FieldGenerator;
 import com.hemendra.mdmgenerator.util.GetterAndSetterGenerator;
-import com.hemendra.mdmgenerator.util.DtoSourceFileGenerator;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

@@ -55,7 +55,7 @@ public class DtoSourceFileGenerator {
 
     public JavaFile invoke(String packageName) {
         //Create class
-        TypeSpec dtoClass = TypeSpec.classBuilder(className)
+        TypeSpec dtoClass = TypeSpec.classBuilder(className+"Dto")
                 .addSuperinterface(Serializable.class)
                 .addFields(fieldSpecs)
                 .addMethods(methodSpecs)

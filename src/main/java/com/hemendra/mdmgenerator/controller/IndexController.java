@@ -2,6 +2,7 @@ package com.hemendra.mdmgenerator.controller;
 
 import com.hemendra.mdmgenerator.generator.GenerateDto;
 import com.hemendra.mdmgenerator.generator.GenerateEntity;
+import com.hemendra.mdmgenerator.generator.GenerateWebServiceRest;
 import com.hemendra.mdmgenerator.model.JsonPayloadModel;
 import com.squareup.javapoet.JavaFile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,14 @@ public class IndexController {
     @Autowired
     GenerateEntity generateEntity;
 
+    @Autowired
+    GenerateWebServiceRest generateWebServiceRest;
+
     @PostMapping("/entity-dto")
     private ResponseEntity<byte []> generateEntityAndDto(@RequestBody JsonPayloadModel jsonPayloadModel) {
         JavaFile dtoFile = generateDto.generate(jsonPayloadModel);
         JavaFile entityFile = generateEntity.generate(jsonPayloadModel);
-
+        JavaFile restInterfaceFile = generateWebServiceRest.generate(jsonPayloadModel);
         return null;
     }
 }

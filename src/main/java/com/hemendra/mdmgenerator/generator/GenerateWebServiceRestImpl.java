@@ -100,7 +100,7 @@ public class GenerateWebServiceRestImpl {
                 customSessionFactoryClazz, listOfDtoClazz, listOfEntityClazz);
 
 
-        return Arrays.asList(constructor, getAllImpl, lazyLoadMethodImpl);
+        return Arrays.asList(constructor, getAllImpl, lazyLoadMethodImpl, setBinaryVariableMethodBuild);
     }
 
     private MethodSpec getSetBinaryVariableMethodBuild(String className, ClassName dtoClazz, ClassName entityClazz,
